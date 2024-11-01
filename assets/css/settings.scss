@@ -1,0 +1,385 @@
+/** Loads on WOOW Gallery Create/Edit Screen
+ *
+ * Any styles that will be used by the main Gallery editor screen should be added to this file
+ */
+/** Imports */
+@import "vars", "mixins", "helpers", "checkbox-toggle";
+
+.woowbox-wrap {
+  box-sizing: border-box;
+
+  * {
+    box-sizing: inherit;
+  }
+  .inside {
+    padding: 10px 20px;
+    margin: 0;
+
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+      height: 0;
+      overflow: hidden;
+    }
+  }
+  .woowbox-postbox .inside {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  h3 {
+    margin: 10px 0;
+  }
+
+  /** Skins */
+  #woowbox-skins {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    z-index: 1;
+    transition: 0.6;
+
+    &.closed {
+      height: 0;
+    }
+
+    .woow-skins {
+      margin: 12px;
+      overflow: hidden;
+      overflow-x: auto;
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 3px;
+
+      label {
+        position: relative;
+        display: block;
+        height: 200px;
+        padding: 12px;
+        box-sizing: content-box;
+
+        @at-root #woowbox-iframe-content#{&} {
+          height: 120px;
+        }
+
+        img {
+          display: block;
+          height: 100%;
+          width: auto;
+          box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #e5e5e5;
+        }
+        input[type="radio"] {
+          position: absolute;
+          right: 0;
+          top: 0;
+          margin: 0;
+          width: auto;
+          height: auto;
+          min-width: auto;
+          border-width: 4px;
+          visibility: hidden;
+
+          &:checked {
+            visibility: visible;
+            border-color: #5b9dd9;
+
+            + img {
+              box-shadow: 0 0 0 3px #ffffff, 0 0 0 7px #5b9dd9;
+            }
+          }
+        }
+      }
+
+      .skin-info {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        display: block;
+        padding: 10px 10px 5px;
+        text-align: right;
+        background: rgba(255, 0, 0, 0.7);
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+        color: #fff;
+
+        .skin-title {
+          float: left;
+        }
+      }
+    }
+  }
+
+  /** Top Buttons */
+  .woow-top-buttons {
+    display: flex;
+    width: 100%;
+    margin-top: -1px;
+
+    .woowbox-skin-preset-selector {
+      flex: 1 1 auto;
+      float: none;
+      margin: 0 0 0 -2px;
+      background-color: #f1f1f1;
+      border: 1px solid #e5e5e5;
+      border-left-color: #f1f1f1;
+      box-shadow: inset -1px 1px 1px rgba(0, 0, 0, 0.04);
+      display: flex;
+
+      h2 {
+        flex: 1 1 auto;
+      }
+
+      .woowbox-skin-preset {
+        padding: 9px 20px 0 10px;
+
+        .label {
+          vertical-align: middle;
+        }
+
+        .form-control {
+          width: auto;
+          height: 26px;
+          min-height: 26px;
+          margin: 0;
+          font-size: 14px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .woowbox-action-buttons {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      align-self: center;
+      padding: 0 20px;
+
+      &.activity {
+        background: url('../images/loader-wave.gif') center center repeat-x;
+
+        button {
+          opacity: 0;
+        }
+      }
+
+      .reset-changes-action {
+        display: none;
+      }
+    }
+
+  }
+
+  /**
+   * Intro Text
+   */
+  .woow-intro {
+    position: relative;
+    margin: 0 0 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+}
+
+[v-cloak] {
+  display: none;
+}
+
+/** Skin Config */
+#woowbox-skin-config {
+  padding: 10px 20px;
+  width: 100%;
+
+  .woowbox-skin-sreenshot {
+    display: none;
+    float: right;
+    max-width: 20%;
+
+    img {
+      width: 200px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    #woowbox-iframe-content & {
+      display: block;
+    }
+    #woowbox-iframe-content.choose-skin & {
+      display: none;
+    }
+  }
+
+  .woowbox-config-tabs-nav {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 0 5px;
+
+    a {
+      display: block;
+      padding: 10px;
+      margin-right: 5px;
+      background: #f7f7f7;
+      color: #010101;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #dddddd;
+      margin-bottom: -1px;
+      box-shadow: inset 0 -1px 1px 0px #ddd;
+
+      &.woowbox-active {
+        background: #fff;
+        border-bottom-color: #fff;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.woowbox-wrap {
+  fieldset {
+    padding: 16px;
+    display: none;
+
+    &.woowbox-active {
+      display: block;
+    }
+  }
+  .form-group {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    min-height: 34px;
+    box-sizing: content-box !important;
+
+    label {
+      flex: 0 1 240px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+
+  .field-input,
+  .field-select,
+  .field-textarea {
+    .field-wrap {
+      margin-top: -5px;
+    }
+  }
+  .field-wrap {
+    flex: 1 1 auto;
+    max-width: 520px;
+    white-space: nowrap;
+
+    .wrapper {
+      max-width: 520px;
+      flex: 1 1 auto;
+    }
+
+    &.with-button {
+      display: flex;
+
+      .field-button {
+        margin-left: 10px;
+        align-self: flex-start;
+
+        &.activity {
+          background: url('../images/loader-wave.gif') center center repeat-x;
+
+          button {
+            visibility: hidden;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="color"] {
+      min-width: 50px;
+    }
+    input[type="number"] {
+      margin-top: -4px;
+    }
+    input[type="color"] {
+      margin-top: -2px;
+    }
+
+  }
+
+  .license-active {
+    [data-action="activate"] {
+      display: none
+    }
+  }
+  .license-inactive {
+    [data-action="deactivate"] {
+      display: none
+    }
+  }
+
+  .hint {
+    padding: 7px 0 12px;
+    font-style: italic;
+
+    code {
+      font-style: initial;
+    }
+  }
+
+  .form-control {
+    border-radius: 4px;
+    min-height: 26px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .field-checkbox {
+    .field-wrap .wrapper {
+      display: inline-block;
+
+      ~ .hint {
+        display: inline-block;
+        padding: 0 0 0 7px;
+      }
+    }
+  }
+}
+
+.woowbox-pro-feature {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 20px 10px;
+
+  h6 {
+    font-size: 14px;
+    margin: 0 0 12px;
+  }
+
+  .dashicons {
+    margin-top: 3px;
+    margin-right: 5px;
+  }
+}
+
+.CodeMirror.CodeMirror-wrap {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+#woowbox-iframe-content {
+  padding: 0 20px;
+  margin-top: -3px;
+
+  #woowbox {
+    padding: 0 !important;
+
+    > h1 { display: none; }
+  }
+
+  #woowbox-skins { display: none; }
+  &.choose-skin #woowbox-skins { display: block; }
+}

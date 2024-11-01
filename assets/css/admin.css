@@ -1,0 +1,96 @@
+/** admin.css loads on all WOOW Administration Screens. */
+/** Imports */
+/* ==========================================================================
+   Variables SCSS
+   ========================================================================== */
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+/**
+* Media Query
+*/
+/**
+* Border-Radius
+*/
+body.screen-woowbox {
+  /** Subheading */
+  /** Wrapper */ }
+  body.screen-woowbox .subheading {
+    background-color: #ffffff;
+    height: 45px;
+    margin-left: -20px; }
+    @media (min-width: 600px) and (max-width: 767px) {
+      body.screen-woowbox .subheading {
+        height: auto;
+        padding-bottom: 20px; } }
+    body.screen-woowbox .subheading h1 {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 45px;
+      margin: 0 0 0 20px;
+      padding-left: 20px; }
+  body.screen-woowbox div.wrap {
+    /** Screen Title */ }
+    body.screen-woowbox div.wrap > h1 {
+      position: static;
+      overflow: visible;
+      padding-top: 5px;
+      margin-bottom: 20px; }
+      body.screen-woowbox div.wrap > h1::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        margin-top: -15px;
+        right: 0;
+        left: -20px;
+        height: 60px;
+        background: #ffffff; }
+  body.screen-woowbox #wpbody-content #screen-meta-links {
+    display: none; }
+  body.screen-woowbox #update-nag, body.screen-woowbox .update-nag {
+    float: right;
+    margin-top: 10px; }
+
+/** Header */
+#woowbox-screen-meta-block {
+  position: relative;
+  margin-left: -20px;
+  padding-left: 20px;
+  background-color: #00a0d2; }
+
+#woowbox-header {
+  background-color: #00a0d2;
+  height: 80px;
+  margin-left: -20px;
+  padding-left: 20px;
+  padding-top: 10px; }
+  @media (max-width: 599px) {
+    #woowbox-header {
+      padding-top: 50px;
+      height: 40px; } }
+  #woowbox-header h1.woowbox-logo {
+    margin: 0;
+    line-height: 80px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase; }
+    @media (max-width: 599px) {
+      #woowbox-header h1.woowbox-logo {
+        line-height: 40px; } }
+    #woowbox-header h1.woowbox-logo img {
+      height: 80px;
+      width: auto;
+      vertical-align: top;
+      margin-right: 10px; }
+      @media (max-width: 599px) {
+        #woowbox-header h1.woowbox-logo img {
+          height: 40px; } }
+    #woowbox-header h1.woowbox-logo span {
+      color: #c3db1b;
+      vertical-align: super;
+      font-size: 80%;
+      line-height: 1; }
+
+@media (max-width: 599px) {
+  #wpbody {
+    padding-top: 0; } }

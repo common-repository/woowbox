@@ -1,0 +1,177 @@
+// Variables
+$toggle-bg: #0085ba;
+$toggle-color: #ffffff;
+$toggle-tab-bg: #ffffff;
+
+$toggle-enabled-bg: #86d993;
+$toggle-enabled-color: #ffffff;
+$toggle-enabled-tab-bg: #ffffff;
+
+$toggle-disabled-bg: #de474e;
+$toggle-disabled-color: #ffffff;
+$toggle-disabled-tab-bg: #ffffff;
+
+/** EXAMPLE
+  <label class="woowbox-toggle">
+    <input type="checkbox" />
+    <span data-on="1" data-off="0"></span>
+  </label>
+**/
+
+.woowbox-toggle {
+  position: relative;
+  outline: 0;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 0 5px 0;
+  box-sizing: border-box;
+
+  span {
+    position: relative;
+    display: block;
+    line-height: 1.3em;
+    overflow: hidden;
+    border-radius: 0.3em;
+    padding: 0.1em 1em;
+    border: 1px solid darken($toggle-enabled-tab-bg, 2);
+    transition: color 0.3s ease, padding 0.3s ease-in-out, background 0.3s ease-in-out;
+
+    &:before {
+      position: relative;
+      display: block;
+      padding: 0 0.2em;
+      font-size: 0.8em;
+    }
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: "";
+      border-radius: 0.2em;
+      width: 1.3em;
+      height: 1.3em;
+      margin-left: -1.4em;
+      top: 0.1em;
+      background: $toggle-enabled-tab-bg;
+      transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 0.97), background 0.3s ease-in-out;
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none !important;
+
+    // Off
+    &:not(:checked) {
+      + span {
+        background: $toggle-disabled-bg;
+        color: $toggle-disabled-color;
+        padding-left: 1.6em;
+        padding-right: 0.4em;
+        &:before {
+          content: attr(data-off);
+          color: $toggle-disabled-color;
+        }
+        &:after {
+          background: $toggle-disabled-tab-bg;
+          left: 1.5em;
+        }
+      }
+    }
+
+    // On
+    &:checked {
+      + span {
+        background: $toggle-enabled-bg;
+        color: $toggle-enabled-color;
+        padding-left: 0.4em;
+        padding-right: 1.6em;
+        &:before {
+          content: attr(data-on);
+        }
+        &:after {
+          background: $toggle-enabled-tab-bg;
+          left: 100%;
+        }
+      }
+    }
+
+    // Disabled
+    &:disabled,
+    &:disabled + span {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.woowbox-toggle-gray {
+  input[type="checkbox"] {
+    &:not(:checked) {
+      + span {
+        background: lighten(desaturate($toggle-enabled-bg, 100%), 20%);
+        color: darken(desaturate($toggle-disabled-color, 100%), 40%);
+        &:before {
+          color: darken(desaturate($toggle-disabled-color, 100%), 40%);
+        }
+        &:after {
+          background: desaturate($toggle-disabled-tab-bg, 100%);
+        }
+      }
+    }
+  }
+}
+
+.woowbox-toggle-mono {
+  span {
+    border: 1px solid darken($toggle-tab-bg, 2);
+    &:after {
+      background: $toggle-tab-bg;
+    }
+  }
+  input[type="checkbox"] {
+    &:not(:checked) {
+      + span {
+        background: $toggle-bg;
+        color: $toggle-color;
+        &:before {
+          color: $toggle-color;
+        }
+        &:after {
+          background: $toggle-tab-bg;
+        }
+      }
+    }
+    &:checked {
+      + span {
+        background: $toggle-bg;
+        color: $toggle-color;
+        &:after {
+          background: $toggle-tab-bg;
+        }
+      }
+    }
+  }
+}
+
+.woowbox-toggle-inline {
+  display: inline-block !important;
+  vertical-align: top;
+
+  &.woowbox-toggle {
+    font-size: 16px;
+    span {
+      min-width: 50px;
+      &:before {
+        line-height: 1.4em;
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+      }
+    }
+  }
+}
+
+.woowbox-toggle-inline-label {
+  display: inline-block !important;
+  vertical-align: top;
+  line-height: 26px;
+}

@@ -1,0 +1,113 @@
+/** admin.css loads on all WOOW Administration Screens. */
+/** Imports */
+@import "vars", "mixins";
+
+body.screen-woowbox {
+  /** Subheading */
+  .subheading {
+    background-color: $white;
+    height: 45px;
+    margin-left: -20px;
+    @include mq(xs) {
+      height: auto;
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 45px;
+      margin: 0 0 0 20px;
+      padding-left: 20px;
+    }
+  }
+
+  /** Wrapper */
+  div.wrap {
+    /** Screen Title */
+    > h1 {
+      position: static;
+      overflow: visible;
+      padding-top: 5px;
+      margin-bottom: 20px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        margin-top: -15px;
+        right: 0;
+        left: -20px;
+        height: 60px;
+        background: $white;
+      }
+    }
+  }
+
+  #wpbody-content #screen-meta-links {
+    display: none;
+  }
+
+  #update-nag, .update-nag {
+    float: right;
+    margin-top: 10px;
+  }
+}
+
+/** Header */
+#woowbox-screen-meta-block {
+  position: relative;
+  margin-left: -20px;
+  padding-left: 20px;
+  background-color: $blue;
+}
+
+#woowbox-header {
+  background-color: $blue;
+  height: $header-height;
+  margin-left: -20px;
+  padding-left: 20px;
+  padding-top: 10px;
+
+  @include mq(xxs) {
+    padding-top: 50px;
+    height: $header-height / 2;
+  }
+
+  h1.woowbox-logo {
+    margin: 0;
+    line-height: $header-height;
+    color: $white;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @include mq(xxs) {
+      line-height: $header-height / 2;
+    }
+
+    img {
+      height: $header-height;
+      width: auto;
+      vertical-align: top;
+      margin-right: 10px;
+
+      @include mq(xxs) {
+        height: $header-height / 2;
+      }
+    }
+
+    span {
+      color: #c3db1b;
+      vertical-align: super;
+      font-size: 80%;
+      line-height: 1;
+    }
+  }
+}
+
+#wpbody {
+  @include mq(xxs) {
+    padding-top: 0;
+  }
+}
+

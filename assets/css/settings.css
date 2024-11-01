@@ -1,0 +1,486 @@
+/** Loads on WOOW Gallery Create/Edit Screen
+ *
+ * Any styles that will be used by the main Gallery editor screen should be added to this file
+ */
+/** Imports */
+/* ==========================================================================
+   Variables SCSS
+   ========================================================================== */
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+/**
+* Media Query
+*/
+/**
+* Border-Radius
+*/
+/** Button Styles */
+.button {
+  /** Red Button */
+  /** Red Button */ }
+  .button.button-danger {
+    background: #e02626;
+    border-color: #cf1e1e;
+    color: #ffffff;
+    box-shadow: 0 1px 0 #b91a1a; }
+    .button.button-danger:hover {
+      background: #f85959;
+      border-color: #f85959;
+      color: #ffffff; }
+    .button.button-danger:active, .button.button-danger:focus {
+      background: #e65353;
+      border-color: #e33c3c;
+      color: #ffffff; }
+  .button.button-success {
+    background: #009628;
+    border-color: #007d21;
+    color: #ffffff;
+    box-shadow: 0 1px 0 #00631a; }
+    .button.button-success:hover {
+      background: #009d29;
+      border-color: #009d29;
+      color: #ffffff; }
+    .button.button-success:active, .button.button-success:focus {
+      background: #00c936;
+      border-color: #00b02f;
+      color: #ffffff; }
+
+/* Add this attribute to the element that needs a tooltip */
+[data-woowbox-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer; }
+
+/* Hide the tooltip content by default */
+[data-woowbox-tooltip]:before,
+[data-woowbox-tooltip]:after {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none; }
+
+/* Position tooltip above the element */
+[data-woowbox-tooltip]:before {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -35px;
+  padding: 7px;
+  width: 60px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  content: attr(data-woowbox-tooltip);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.2; }
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-woowbox-tooltip]:after {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  width: 0;
+  margin-left: -5px;
+  border-top: 5px solid #000;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0; }
+
+/* Show tooltip content on hover */
+[data-woowbox-tooltip]:hover:before,
+[data-woowbox-tooltip]:hover:after {
+  visibility: visible;
+  opacity: 1; }
+
+/* Helper styles */
+.woowbox-hidden {
+  display: none !important; }
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+  clear: both;
+  height: 0;
+  overflow: hidden; }
+
+/** EXAMPLE
+  <label class="woowbox-toggle">
+    <input type="checkbox" />
+    <span data-on="1" data-off="0"></span>
+  </label>
+**/
+.woowbox-toggle {
+  position: relative;
+  outline: 0;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 0 5px 0;
+  box-sizing: border-box; }
+  .woowbox-toggle span {
+    position: relative;
+    display: block;
+    line-height: 1.3em;
+    overflow: hidden;
+    border-radius: 0.3em;
+    padding: 0.1em 1em;
+    border: 1px solid #fafafa;
+    transition: color 0.3s ease, padding 0.3s ease-in-out, background 0.3s ease-in-out; }
+    .woowbox-toggle span:before {
+      position: relative;
+      display: block;
+      padding: 0 0.2em;
+      font-size: 0.8em; }
+    .woowbox-toggle span:after {
+      position: absolute;
+      display: block;
+      content: "";
+      border-radius: 0.2em;
+      width: 1.3em;
+      height: 1.3em;
+      margin-left: -1.4em;
+      top: 0.1em;
+      background: #ffffff;
+      transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 0.97), background 0.3s ease-in-out; }
+  .woowbox-toggle input[type="checkbox"] {
+    display: none !important; }
+    .woowbox-toggle input[type="checkbox"]:not(:checked) + span {
+      background: #de474e;
+      color: #ffffff;
+      padding-left: 1.6em;
+      padding-right: 0.4em; }
+      .woowbox-toggle input[type="checkbox"]:not(:checked) + span:before {
+        content: attr(data-off);
+        color: #ffffff; }
+      .woowbox-toggle input[type="checkbox"]:not(:checked) + span:after {
+        background: #ffffff;
+        left: 1.5em; }
+    .woowbox-toggle input[type="checkbox"]:checked + span {
+      background: #86d993;
+      color: #ffffff;
+      padding-left: 0.4em;
+      padding-right: 1.6em; }
+      .woowbox-toggle input[type="checkbox"]:checked + span:before {
+        content: attr(data-on); }
+      .woowbox-toggle input[type="checkbox"]:checked + span:after {
+        background: #ffffff;
+        left: 100%; }
+    .woowbox-toggle input[type="checkbox"]:disabled,
+    .woowbox-toggle input[type="checkbox"]:disabled + span {
+      cursor: not-allowed; }
+
+.woowbox-toggle-gray input[type="checkbox"]:not(:checked) + span {
+  background: #e2e3e2;
+  color: #999999; }
+  .woowbox-toggle-gray input[type="checkbox"]:not(:checked) + span:before {
+    color: #999999; }
+  .woowbox-toggle-gray input[type="checkbox"]:not(:checked) + span:after {
+    background: white; }
+
+.woowbox-toggle-mono span {
+  border: 1px solid #fafafa; }
+  .woowbox-toggle-mono span:after {
+    background: #ffffff; }
+
+.woowbox-toggle-mono input[type="checkbox"]:not(:checked) + span {
+  background: #0085ba;
+  color: #ffffff; }
+  .woowbox-toggle-mono input[type="checkbox"]:not(:checked) + span:before {
+    color: #ffffff; }
+  .woowbox-toggle-mono input[type="checkbox"]:not(:checked) + span:after {
+    background: #ffffff; }
+
+.woowbox-toggle-mono input[type="checkbox"]:checked + span {
+  background: #0085ba;
+  color: #ffffff; }
+  .woowbox-toggle-mono input[type="checkbox"]:checked + span:after {
+    background: #ffffff; }
+
+.woowbox-toggle-inline {
+  display: inline-block !important;
+  vertical-align: top; }
+  .woowbox-toggle-inline.woowbox-toggle {
+    font-size: 16px; }
+    .woowbox-toggle-inline.woowbox-toggle span {
+      min-width: 50px; }
+      .woowbox-toggle-inline.woowbox-toggle span:before {
+        line-height: 1.4em;
+        padding-left: 0.4em;
+        padding-right: 0.4em; }
+
+.woowbox-toggle-inline-label {
+  display: inline-block !important;
+  vertical-align: top;
+  line-height: 26px; }
+
+.woowbox-wrap {
+  box-sizing: border-box;
+  /** Skins */
+  /** Top Buttons */
+  /**
+   * Intro Text
+   */ }
+  .woowbox-wrap * {
+    box-sizing: inherit; }
+  .woowbox-wrap .inside {
+    padding: 10px 20px;
+    margin: 0; }
+    .woowbox-wrap .inside::after {
+      content: "";
+      display: table;
+      clear: both;
+      height: 0;
+      overflow: hidden; }
+  .woowbox-wrap .woowbox-postbox .inside {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; }
+  .woowbox-wrap h3 {
+    margin: 10px 0; }
+  .woowbox-wrap #woowbox-skins {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    z-index: 1;
+    transition: 0.6; }
+    .woowbox-wrap #woowbox-skins.closed {
+      height: 0; }
+    .woowbox-wrap #woowbox-skins .woow-skins {
+      margin: 12px;
+      overflow: hidden;
+      overflow-x: auto;
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 3px; }
+      .woowbox-wrap #woowbox-skins .woow-skins label {
+        position: relative;
+        display: block;
+        height: 200px;
+        padding: 12px;
+        box-sizing: content-box; }
+        #woowbox-iframe-content.woowbox-wrap #woowbox-skins .woow-skins label {
+          height: 120px; }
+        .woowbox-wrap #woowbox-skins .woow-skins label img {
+          display: block;
+          height: 100%;
+          width: auto;
+          box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #e5e5e5; }
+        .woowbox-wrap #woowbox-skins .woow-skins label input[type="radio"] {
+          position: absolute;
+          right: 0;
+          top: 0;
+          margin: 0;
+          width: auto;
+          height: auto;
+          min-width: auto;
+          border-width: 4px;
+          visibility: hidden; }
+          .woowbox-wrap #woowbox-skins .woow-skins label input[type="radio"]:checked {
+            visibility: visible;
+            border-color: #5b9dd9; }
+            .woowbox-wrap #woowbox-skins .woow-skins label input[type="radio"]:checked + img {
+              box-shadow: 0 0 0 3px #ffffff, 0 0 0 7px #5b9dd9; }
+      .woowbox-wrap #woowbox-skins .woow-skins .skin-info {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        display: block;
+        padding: 10px 10px 5px;
+        text-align: right;
+        background: rgba(255, 0, 0, 0.7);
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+        color: #fff; }
+        .woowbox-wrap #woowbox-skins .woow-skins .skin-info .skin-title {
+          float: left; }
+  .woowbox-wrap .woow-top-buttons {
+    display: flex;
+    width: 100%;
+    margin-top: -1px; }
+    .woowbox-wrap .woow-top-buttons .woowbox-skin-preset-selector {
+      flex: 1 1 auto;
+      float: none;
+      margin: 0 0 0 -2px;
+      background-color: #f1f1f1;
+      border: 1px solid #e5e5e5;
+      border-left-color: #f1f1f1;
+      box-shadow: inset -1px 1px 1px rgba(0, 0, 0, 0.04);
+      display: flex; }
+      .woowbox-wrap .woow-top-buttons .woowbox-skin-preset-selector h2 {
+        flex: 1 1 auto; }
+      .woowbox-wrap .woow-top-buttons .woowbox-skin-preset-selector .woowbox-skin-preset {
+        padding: 9px 20px 0 10px; }
+        .woowbox-wrap .woow-top-buttons .woowbox-skin-preset-selector .woowbox-skin-preset .label {
+          vertical-align: middle; }
+        .woowbox-wrap .woow-top-buttons .woowbox-skin-preset-selector .woowbox-skin-preset .form-control {
+          width: auto;
+          height: 26px;
+          min-height: 26px;
+          margin: 0;
+          font-size: 14px;
+          vertical-align: middle; }
+    .woowbox-wrap .woow-top-buttons .woowbox-action-buttons {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      align-self: center;
+      padding: 0 20px; }
+      .woowbox-wrap .woow-top-buttons .woowbox-action-buttons.activity {
+        background: url("../images/loader-wave.gif") center center repeat-x; }
+        .woowbox-wrap .woow-top-buttons .woowbox-action-buttons.activity button {
+          opacity: 0; }
+      .woowbox-wrap .woow-top-buttons .woowbox-action-buttons .reset-changes-action {
+        display: none; }
+  .woowbox-wrap .woow-intro {
+    position: relative;
+    margin: 0 0 10px;
+    border-bottom: 1px solid #ddd; }
+
+[v-cloak] {
+  display: none; }
+
+/** Skin Config */
+#woowbox-skin-config {
+  padding: 10px 20px;
+  width: 100%; }
+  #woowbox-skin-config .woowbox-skin-sreenshot {
+    display: none;
+    float: right;
+    max-width: 20%; }
+    #woowbox-skin-config .woowbox-skin-sreenshot img {
+      width: 200px;
+      max-width: 100%;
+      height: auto; }
+    #woowbox-iframe-content #woowbox-skin-config .woowbox-skin-sreenshot {
+      display: block; }
+    #woowbox-iframe-content.choose-skin #woowbox-skin-config .woowbox-skin-sreenshot {
+      display: none; }
+  #woowbox-skin-config .woowbox-config-tabs-nav {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 0 5px; }
+    #woowbox-skin-config .woowbox-config-tabs-nav a {
+      display: block;
+      padding: 10px;
+      margin-right: 5px;
+      background: #f7f7f7;
+      color: #010101;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #dddddd;
+      margin-bottom: -1px;
+      box-shadow: inset 0 -1px 1px 0px #ddd; }
+      #woowbox-skin-config .woowbox-config-tabs-nav a.woowbox-active {
+        background: #fff;
+        border-bottom-color: #fff;
+        box-shadow: none; }
+
+.woowbox-wrap fieldset {
+  padding: 16px;
+  display: none; }
+  .woowbox-wrap fieldset.woowbox-active {
+    display: block; }
+
+.woowbox-wrap .form-group {
+  display: flex;
+  width: 100%;
+  padding: 10px 0;
+  min-height: 34px;
+  box-sizing: content-box !important; }
+  .woowbox-wrap .form-group label {
+    flex: 0 1 240px;
+    font-weight: bold;
+    font-size: 14px; }
+
+.woowbox-wrap .field-input .field-wrap,
+.woowbox-wrap .field-select .field-wrap,
+.woowbox-wrap .field-textarea .field-wrap {
+  margin-top: -5px; }
+
+.woowbox-wrap .field-wrap {
+  flex: 1 1 auto;
+  max-width: 520px;
+  white-space: nowrap; }
+  .woowbox-wrap .field-wrap .wrapper {
+    max-width: 520px;
+    flex: 1 1 auto; }
+  .woowbox-wrap .field-wrap.with-button {
+    display: flex; }
+    .woowbox-wrap .field-wrap.with-button .field-button {
+      margin-left: 10px;
+      align-self: flex-start; }
+      .woowbox-wrap .field-wrap.with-button .field-button.activity {
+        background: url("../images/loader-wave.gif") center center repeat-x; }
+        .woowbox-wrap .field-wrap.with-button .field-button.activity button {
+          visibility: hidden;
+          pointer-events: none; }
+  .woowbox-wrap .field-wrap input[type="text"],
+  .woowbox-wrap .field-wrap input[type="number"],
+  .woowbox-wrap .field-wrap input[type="color"] {
+    min-width: 50px; }
+  .woowbox-wrap .field-wrap input[type="number"] {
+    margin-top: -4px; }
+  .woowbox-wrap .field-wrap input[type="color"] {
+    margin-top: -2px; }
+
+.woowbox-wrap .license-active [data-action="activate"] {
+  display: none; }
+
+.woowbox-wrap .license-inactive [data-action="deactivate"] {
+  display: none; }
+
+.woowbox-wrap .hint {
+  padding: 7px 0 12px;
+  font-style: italic; }
+  .woowbox-wrap .hint code {
+    font-style: initial; }
+
+.woowbox-wrap .form-control {
+  border-radius: 4px;
+  min-height: 26px;
+  width: 100%;
+  box-sizing: border-box; }
+
+.woowbox-wrap .field-checkbox .field-wrap .wrapper {
+  display: inline-block; }
+  .woowbox-wrap .field-checkbox .field-wrap .wrapper ~ .hint {
+    display: inline-block;
+    padding: 0 0 0 7px; }
+
+.woowbox-pro-feature {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 20px 10px; }
+  .woowbox-pro-feature h6 {
+    font-size: 14px;
+    margin: 0 0 12px; }
+  .woowbox-pro-feature .dashicons {
+    margin-top: 3px;
+    margin-right: 5px; }
+
+.CodeMirror.CodeMirror-wrap {
+  border: 1px solid #dddddd;
+  border-radius: 4px; }
+
+#woowbox-iframe-content {
+  padding: 0 20px;
+  margin-top: -3px; }
+  #woowbox-iframe-content #woowbox {
+    padding: 0 !important; }
+    #woowbox-iframe-content #woowbox > h1 {
+      display: none; }
+  #woowbox-iframe-content #woowbox-skins {
+    display: none; }
+  #woowbox-iframe-content.choose-skin #woowbox-skins {
+    display: block; }

@@ -1,0 +1,53 @@
+/* ==========================================================================
+   editor.css loads on any screen where the WoowBox button is output
+
+   Any styles that will be used by the WoowBox modal should be put here
+   ========================================================================== */
+/* ==========================================================================
+   Imports
+   ========================================================================== */
+@import "vars", "mixins", "helpers";
+
+#woowbox-modal {
+  .media-modal-close {
+    right: 0;
+    top: 0;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+
+    .media-modal-icon {
+      margin-top: 0;
+    }
+  }
+
+  .media-frame-content iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* Elementor CSS fix */
+button[data-event="woowbox:module:settings"] {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.elementor-editor-active {
+  .compat-attachment-fields {
+    margin: 15px 0;
+
+    th.textleft {
+      padding: 7px 0;
+    }
+  }
+}

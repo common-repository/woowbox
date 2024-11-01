@@ -1,0 +1,12 @@
+/* Frontend CSS */
+.woowbox-gallery-wrap {
+  box-sizing: border-box !important;
+
+  * {
+    box-sizing: border-box !important;
+  }
+
+  svg {
+    vertical-align: baseline !important;
+  }
+}
